@@ -60,6 +60,6 @@ app.use(function(req, res) {
     return res.status(404).json({ message: 'The url you visited does not exist.' });
 });
 
-//app.listen(config.port, () => console.log(`Listening on port ${config.port}!`));
+//app.listen(config.port, () => console.log(`Magic happening on port ${config.port}!`));
 
 module.exports.handler = serverless(app);
