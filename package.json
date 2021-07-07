@@ -4,7 +4,6 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "mocha 'app/test/test.js' --recursive --timeout 10000",
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
