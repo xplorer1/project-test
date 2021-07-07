@@ -2,21 +2,21 @@ module.exports = {
     'port': process.env.PORT || 9000,
 
     'base_url': "",
-    'database' : process.env.DATABASE_URL,
+    'database' : process.env.DATABASE_URL, //process.env.DATABASE_URL,
 
     'secret': 'XFH!P(0EV#HJF1X&4#VB5XWVJTTD)STWV6R$IYS6&%V80D9VL0M#N79%XR3BP&S$1C4IWU20W6U6HST5S32($S%8&06X)VOR!*^QTONN*FYPOP3#@UM5^2)C81MK9TK!14LQFO7!',
     'mail' : {
-        'username': process.env.DATABASE_URL,
-        'password': process.env.DATABASE_URL,
-        'host': process.env.DATABASE_URL,
-        'port': process.env.DATABASE_URL,
-        'sender': process.env.DATABASE_URL
+        'username': process.env.MAIL_USERNAME,
+        'password': process.env.MAIL_PASSWORD,
+        'host': process.env.MAIL_HOST,
+        'port': process.env.MAIL_PORT,
+        'sender': process.env.MAIL_USERNAME
     },
 
     'cloudinary': {
-        'cloud_name': process.env.DATABASE_URL,
-        'api_key': process.env.DATABASE_URL,
-        'api_secret': process.env.DATABASE_URL
+        'cloud_name': process.env.CLOUDINARY_CLOUD_NAME,
+        'api_key': process.env.CLOUDINARY_API_KEY,
+        'api_secret': process.env.CLOUDINARY_API_SECRET
     },
     generateCode: function () {
         var length = 10,
