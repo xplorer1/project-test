@@ -8,7 +8,7 @@ module.exports = {
      * 
      * @param {email,password} req object
      * @param {object} res object
-     * @returns {object} success or error response object.
+     * @returns {object} success or error response object
      */
 
     signUp: async function(req, res) {
