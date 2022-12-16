@@ -1,6 +1,5 @@
 let UserModel = require('../models/UserModel');
 
-let mailer = require('../utils/mailer');
 let uuid = require('node-uuid');
 
 module.exports = {
@@ -28,9 +27,7 @@ module.exports = {
 
             await user.save();
 
-            mailer.sendEmailVerificationMail(verification_code, req.body.email);
-
-            return res.status(200).json({status: 200, message: "Account has been created. Check your mail for verification code."});
+            return res.status(200).json({status: 200, message: "Account has been created"});
 
         } catch (error) {
             return res.status(500).json({

@@ -1,25 +1,7 @@
-require('dotenv').config();
-const serverless = require("serverless-http");
 const express = require("express");
 const app = express();
 
 const cors = require('cors'); //for handliing cors configuration.
-const appstorage = require("./app/utils/nodepersist"); //for storing invalidated jwt tokens.
-
-const mongoose = require('mongoose'); // for working w/ our database
-const config = require('./config');
-
-mongoose.Promise = global.Promise;
-mongoose.connect(config.database, { useUnifiedTopology: true, useFindAndModify: false, useNewUrlParser: true });
-
-let conn = mongoose.connection;
-conn.on('error', function(err){
-    console.log('mongoose connection error:', err.message);
-});
-
-if(!appstorage.get("blacklist")) { //for setting the stage for storing invalidated tokens.
-    appstorage.set("blacklist", []);
-}
 
 app.use(cors());
 
@@ -37,29 +19,12 @@ app.use(function(req, res, next) {
     next();
 });
 
-//import our routes.
-let AuthRoutes = require('./app/routes/AuthRoutes');
-let UserRoutes = require('./app/routes/UserRoutes');
-let PostRoutes = require('./app/routes/PostRoutes');
-
-app.use(function(req, res, next) {
-    console.log(req.method, req.url); //logs each request to the console.
-    next(); 
-});
-
 app.get("/", function(req, res) {
     return res.status(200).json("You have arrived. Do fast and get out!!. Angrily visit the app documentation to learn how to use the APIs.");
 });
 
-//set our app to handling our routes.
-app.use("/api/auth", AuthRoutes);
-app.use("/api/user", UserRoutes);
-app.use("/api/post", PostRoutes);
-
 app.use(function(req, res) {
-    return res.status(404).json({ message: 'The url you visited does not exist.' });
+    return res.status(200).json({ message: 'Welcome to the codebase.' });
 });
 
-module.exports = app.listen(config.port, () => console.log(`Magic happening on port ${config.port}!`));
-
-module.exports.handler = serverless(app);
+app.listen(config.port, () => console.log(`Magic happening on port ${config.port}!`));
